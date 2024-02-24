@@ -1,5 +1,4 @@
-name: Deploy to GitHub Pages
-
+name: Deploy
 
 on: 
   pull_request:
@@ -28,9 +27,7 @@ jobs:
           
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: |
-          cd ./src/onboardcode/
-          dotnet publish onboardcode.github.io.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+        run: dotnet publish ./src/onboardcode/onboardcode.github.io.csproj -c:Release -p:GHPages=true -o ./src/onboardcode/dist/Web --nologo
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
